@@ -12,10 +12,9 @@ class Player
   attr_reader :name, :job, :is_human
 
   def initialize(job)
-    @job = job
+    @job = job # is this needed?
     @is_human = human?
     display_created_player_greting
-
   end
 
   private

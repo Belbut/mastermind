@@ -1,9 +1,11 @@
 require_relative './lib/game'
 
-Game.new
+a= Game.new
+a.play
+
 
 # loop do
-#     Game.new.game_run
+#     Game.new.pay
   
 #     puts 'Wanna play again? [Y/N]'
 #     break if gets.chomp != 'Y'
