@@ -42,10 +42,12 @@ module MessageDisplay
     puts is_repeatable ? 'The colors CAN repeat' : 'The colors can NOT repeat'
     puts "The code has #{number_of_slots} slots"
     puts 'Feedbak means: ■ - Correct color and position   □ - Correct color'
+    p secret_code
+
   end
 
   def display_breaker_input_prompt
-    puts "What sequence do #{breaker.name} wan't to choose? (eg. 1354)"
+    puts "What sequence do #{breaker.name} want to choose? (eg. 1354)"
   end
 
   def display_in_line(codes_array)
@@ -65,6 +67,10 @@ module MessageDisplay
 
   def display_round_feedback(code_tested, white_squares, black_squares)
     puts "#{code_to_color_display(code_tested)} #{'■ ' * white_squares} #{'□ ' * black_squares}"
+  end
+
+  def display_input_not_valid
+    puts 'Invalid input please follow the requirements presented on the start of the terminal'
   end
 
   private

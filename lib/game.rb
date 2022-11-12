@@ -36,8 +36,15 @@ class Game
 
       if breaker.is_human
         # It's human let's prompt
-        display_breaker_input_prompt
-        input = gets.chomp
+        player_input = ''
+        loop do
+          display_breaker_input_prompt
+          player_input = gets.chomp.split('')
+          break if valid_input?(player_input)
+
+          display_input_not_valid
+        end
+        check_code(player_input)
 
       else
         computer_guess = random_code_generator
