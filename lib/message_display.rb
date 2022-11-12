@@ -43,7 +43,6 @@ module MessageDisplay
     puts "The code has #{number_of_slots} slots"
     puts 'Feedbak means: ■ - Correct color and position   □ - Correct color'
     p secret_code
-
   end
 
   def display_breaker_input_prompt
@@ -71,6 +70,18 @@ module MessageDisplay
 
   def display_input_not_valid
     puts 'Invalid input please follow the requirements presented on the start of the terminal'
+  end
+
+  def display_winning_message(round)
+    puts "Congratulations you craked the code in #{round} round"
+  end
+
+  def display_lossing_message
+    puts "Sorry, you failed in cracking the code. The code was: #{secret_code.join}"
+  end
+
+  def display_coder_input_prompt
+    puts "#{creator.name} please enter the desired code:"
   end
 
   private

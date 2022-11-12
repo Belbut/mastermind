@@ -14,12 +14,10 @@ module Jobs
     true
   end
 
-  # Return an array
   def create_code
     if creator.is_human
-      puts 'lets prompt for the code'
+      player_code_generator
     else
-      # not a human create random code following all the rules
       random_code_generator
     end
   end
@@ -29,11 +27,23 @@ module Jobs
     black_number = black_number_check_code(white_hash[:code_clone], white_hash[:secret_code_clone])
 
     display_round_feedback(code, white_hash[:white_number], black_number)
-    
+
     code == secret_code
   end
 
   private
+
+  def player_code_generator
+    display_coder_input_prompt
+    player_input = ''
+    loop do
+      player_input = gets.chomp.split('')
+      break if valid_input?(player_input)
+
+      display_input_not_valid
+    end
+    player_input
+  end
 
   # return a hash with needed information for white square
 

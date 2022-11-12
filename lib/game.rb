@@ -33,29 +33,33 @@ class Game
     until game_round == 12
       @game_round += 1
       display_round_count
-
-      if breaker.is_human
-        # It's human let's prompt
-        player_input = ''
-        loop do
-          display_breaker_input_prompt
-          player_input = gets.chomp.split('')
-          break if valid_input?(player_input)
-
-          display_input_not_valid
-        end
-        check_code(player_input)
-
-      else
-        computer_guess = random_code_generator
-        display_computer_guess(computer_guess)
-        # not a human create random code following all the rules
-        check_code(computer_guess)
-      end
+      guess = breaker.is_human ? human_play : computer_play
+      won = check_code(guess)
+      break if won
     end
+    won ? display_winning_message(game_round) : display_lossing_message
   end
 
   private
+
+  def human_play
+    # It's human let's prompt
+    player_input = ''
+    loop do
+      display_breaker_input_prompt
+      player_input = gets.chomp.split('')
+      break if valid_input?(player_input)
+
+      display_input_not_valid
+    end
+    player_input
+  end
+
+  def computer_play
+    computer_guess = random_code_generator
+    display_computer_guess(computer_guess)
+    computer_guess
+  end
 
   def define_rules_of_the_game
     # display_repeting_colors_prompt
