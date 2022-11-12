@@ -46,7 +46,7 @@ module MessageDisplay
   end
 
   def display_breaker_input_prompt
-    puts "What sequence do #{breaker.name} want to choose? (eg. 1354)"
+    puts " #{breaker.name} what code sequence do you want to try?"
   end
 
   def display_in_line(codes_array)
@@ -69,7 +69,7 @@ module MessageDisplay
   end
 
   def display_input_not_valid
-    puts 'Invalid input please follow the requirements presented on the start of the terminal'
+    puts 'Invalid input please follow the requirements presented on the beginning of the terminal'
   end
 
   def display_winning_message(round)
