@@ -14,6 +14,16 @@ module Jobs
     true
   end
 
+  def valid_guess_input?(input)
+    # a guess can repeate values
+    # wrong input size
+    return false if input.size != number_of_slots
+    # uses values outside of the codes in use
+    return false if input.select { |element| codes_in_use.include?(element) }.size != input.size
+
+    true
+  end
+
   def create_code
     if creator.is_human
       player_code_generator

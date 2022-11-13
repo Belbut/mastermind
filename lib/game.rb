@@ -33,6 +33,7 @@ class Game
     until game_round == 12
       @game_round += 1
       display_round_count
+
       guess = breaker.is_human ? human_play : computer_play
       won = check_code(guess)
       break if won
@@ -48,7 +49,7 @@ class Game
     loop do
       display_breaker_input_prompt
       player_input = gets.chomp.split('')
-      break if valid_input?(player_input)
+      break if valid_guess_input?(player_input)
 
       display_input_not_valid
     end
@@ -58,6 +59,7 @@ class Game
   def computer_play
     computer_guess = random_code_generator
     display_computer_guess(computer_guess)
+    sleep(1)
     computer_guess
   end
 
